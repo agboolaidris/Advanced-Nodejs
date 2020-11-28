@@ -2,3 +2,8 @@
 //import font awesome 
 //import google font
 //design the footer 
+
+
+$primary: #8d1103; red
+$secondary: #f9f9f9; white
+$neutral: #10da24;green
