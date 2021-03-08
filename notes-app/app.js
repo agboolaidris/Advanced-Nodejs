@@ -10,8 +10,13 @@ yargs.command({
   command: "add",
   describe: "add a note!",
   builder: {
-    body: {
+    title: {
       describe: "add title",
+      demandOption: true,
+      type: "string",
+    },
+    body: {
+      describe: "add body",
       demandOption: true,
       type: "string",
     },
