@@ -1,6 +1,17 @@
 const fs = require("fs");
-const addNote = (title, body) => {};
+const chalk = require("chalk");
 
+const addNote = (title, body) => {
+  const data = loadNote();
+  data.push({ title: title, body: body });
+  saveNote(data);
+};
+
+const saveNote = (e) => {
+  console.log(e);
+  const data = JSON.stringify(e);
+  fs.writeFileSync("note.json", data);
+};
 const loadNote = () => {
   try {
     const dataBuffer = fs.readFileSync("note.json");
@@ -11,4 +22,6 @@ const loadNote = () => {
   }
 };
 
-module.exports = not;
+module.exports = {
+  addNote,
+};

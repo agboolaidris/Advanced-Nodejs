@@ -1,4 +1,4 @@
-const note = require("./note");
+const { addNote } = require("./note");
 const chalk = require("chalk");
 const yargs = require("yargs");
 
@@ -22,7 +22,7 @@ yargs.command({
     },
   },
   handler: (argv) => {
-    console.log("body: " + argv.body);
+    addNote(argv.title, argv.body);
   },
 });
 
@@ -52,9 +52,7 @@ yargs.command({
     console.log("list a note!");
   },
 });
-
-console.log(yargs.argv);
-
+yargs.parse();
 //const fs = require("fs");
 //fs.writeFileSync("note.txt", "my name is idris.");
 //fs.appendFileSync("note.txt", " I live in Laos, Nigeria");
