@@ -37,6 +37,7 @@ const listNote = () => {
 const readNote = (title) => {
   const data = loadNote();
   const res = data.find((e) => e.title === title);
+  debugger;
   if (res) {
     console.log(chalk.bgGreen(res.title));
     console.log(res.body);
