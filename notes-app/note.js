@@ -3,8 +3,14 @@ const chalk = require("chalk");
 
 const addNote = (title, body) => {
   const data = loadNote();
-  data.push({ title: title, body: body });
-  saveNote(data);
+  const filter = data.filter((e) => (e.title = title));
+  if (!filter) {
+    data.push({ title: title, body: body });
+    saveNote(data);
+    console.log("note! added");
+  } else {
+    console.log("note! exist in json");
+  }
 };
 
 const saveNote = (e) => {
