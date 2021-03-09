@@ -3,13 +3,27 @@ const chalk = require("chalk");
 
 const addNote = (title, body) => {
   const data = loadNote();
-  const filter = data.filter((e) => (e.title = title));
-  if (!filter) {
+  const filter = data.filter((e) => e.title === title);
+
+  if (filter.length === 0) {
     data.push({ title: title, body: body });
     saveNote(data);
     console.log("note! added");
   } else {
     console.log("note! exist in json");
+  }
+};
+
+const removeNote = (title) => {
+  const data = loadNote();
+  const res = data.find((e) => e.title === title);
+
+  if (res) {
+    const e = data.filter((e) => e.title !== title);
+    saveNote(e);
+    console.log(chalk.bgGreen("note remove!"));
+  } else {
+    console.log(chalk.bgRed("note does not exist"));
   }
 };
 
@@ -30,4 +44,5 @@ const loadNote = () => {
 
 module.exports = {
   addNote,
+  removeNote,
 };
