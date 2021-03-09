@@ -27,6 +27,24 @@ const removeNote = (title) => {
   }
 };
 
+const listNote = () => {
+  const data = loadNote();
+  data.forEach((element) => {
+    console.log(element.title);
+  });
+};
+
+const readNote = (title) => {
+  const data = loadNote();
+  const res = data.find((e) => e.title === title);
+  if (res) {
+    console.log(chalk.bgGreen(res.title));
+    console.log(res.body);
+  } else {
+    console.log(chalk.bgRed("note not found"));
+  }
+};
+
 const saveNote = (e) => {
   console.log(e);
   const data = JSON.stringify(e);
@@ -45,4 +63,6 @@ const loadNote = () => {
 module.exports = {
   addNote,
   removeNote,
+  listNote,
+  readNote,
 };
